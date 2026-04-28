@@ -1,8 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { dict, routesByLang, type Lang } from "@/lib/i18n";
 
-export function SiteFooter() {
+export function SiteFooter({ lang }: { lang: Lang }) {
+  const t = dict[lang];
+  const r = routesByLang[lang];
   return (
     <footer className="mt-24 border-t border-border bg-secondary/40">
       <div className="container-page py-14 grid gap-10 md:grid-cols-4">
@@ -13,22 +16,19 @@ export function SiteFooter() {
               Teranga Bridge <span className="text-primary">Africa</span>
             </span>
           </div>
-          <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-            Partenaire de confiance pour la fourniture de matières premières et d'équipements
-            agroalimentaires en Afrique.
-          </p>
+          <p className="mt-4 text-sm text-muted-foreground leading-relaxed">{t.footer.tagline}</p>
         </div>
         <div>
-          <h3 className="text-sm font-semibold text-foreground">Navigation</h3>
+          <h3 className="text-sm font-semibold text-foreground">{t.footer.navTitle}</h3>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-            <li><Link to="/a-propos" className="hover:text-primary">À propos</Link></li>
-            <li><Link to="/services" className="hover:text-primary">Nos services</Link></li>
-            <li><Link to="/engagements" className="hover:text-primary">Nos engagements</Link></li>
-            <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
+            <li><Link to={r.about} className="hover:text-primary">{t.nav.about}</Link></li>
+            <li><Link to={r.services} className="hover:text-primary">{t.nav.services}</Link></li>
+            <li><Link to={r.commitments} className="hover:text-primary">{t.nav.commitments}</Link></li>
+            <li><Link to={r.contact} className="hover:text-primary">{t.nav.contact}</Link></li>
           </ul>
         </div>
         <div>
-          <h3 className="text-sm font-semibold text-foreground">Contact</h3>
+          <h3 className="text-sm font-semibold text-foreground">{t.footer.contactTitle}</h3>
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
             <li className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-0.5 text-primary shrink-0" />Sacré Cœur 3 VDN, 57, Dakar, Sénégal</li>
             <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-primary" /><a href="tel:+221338920721" className="hover:text-primary">+221 33 892 07 21</a></li>
@@ -38,7 +38,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-border/60">
         <div className="container-page py-5 text-xs text-muted-foreground flex flex-col sm:flex-row justify-between gap-2">
-          <p>© {new Date().getFullYear()} Teranga Bridge Africa. Tous droits réservés.</p>
+          <p>© {new Date().getFullYear()} Teranga Bridge Africa. {t.footer.rights}</p>
           <p>Dakar · Sénégal · Afrique</p>
         </div>
       </div>

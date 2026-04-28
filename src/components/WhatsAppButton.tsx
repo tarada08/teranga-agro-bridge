@@ -1,12 +1,14 @@
-export function WhatsAppButton() {
+import { dict, type Lang } from "@/lib/i18n";
+
+export function WhatsAppButton({ lang }: { lang: Lang }) {
   const phone = "221338920721";
-  const text = encodeURIComponent("Bonjour Teranga Bridge Africa, je souhaite obtenir des informations.");
+  const text = encodeURIComponent(dict[lang].whatsappMsg);
   return (
     <a
       href={`https://wa.me/${phone}?text=${text}`}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Contactez-nous sur WhatsApp"
+      aria-label="WhatsApp"
       className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-elegant transition-transform hover:scale-110"
     >
       <svg viewBox="0 0 32 32" className="h-7 w-7 fill-current" aria-hidden="true">
