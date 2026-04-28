@@ -5,9 +5,10 @@ import logo from "@/assets/logo.png";
 import { dict, routesByLang, otherLangPath, type Lang } from "@/lib/i18n";
 
 export function SiteHeader({ lang }: { lang: Lang }) {
+  const safeLang: Lang = lang === "en" ? "en" : "fr";
   const [open, setOpen] = useState(false);
-  const t = dict[lang];
-  const r = routesByLang[lang];
+  const t = dict[safeLang];
+  const r = routesByLang[safeLang];
   const location = useLocation();
   const altPath = otherLangPath(location.pathname, lang);
   const altLabel = lang === "fr" ? "EN" : "FR";
