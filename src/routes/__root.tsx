@@ -1,25 +1,27 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute, HeadContent, Scripts, useLocation } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import type { Lang } from "@/lib/i18n";
 
 import appCss from "../styles.css?url";
+
+function detectLang(pathname: string): Lang {
+  return pathname === "/en" || pathname.startsWith("/en/") ? "en" : "fr";
+}
 
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page introuvable</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          La page que vous cherchez n'existe pas ou a été déplacée.
+          The page you're looking for doesn't exist.
         </p>
         <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Retour à l'accueil
+          <Link to="/" className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90">
+            Go home
           </Link>
         </div>
       </div>
@@ -32,13 +34,9 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Teranga Bridge Africa — Approvisionnement agroalimentaire en Afrique" },
-      { name: "description", content: "Fourniture de matières premières et d'équipements agroalimentaires en Afrique. Partenaire industriel basé à Dakar, Sénégal." },
-      { name: "keywords", content: "agroalimentaire Afrique, matières premières Sénégal, équipements industriels, import export Dakar" },
       { name: "author", content: "Teranga Bridge Africa" },
-      { property: "og:title", content: "Teranga Bridge Africa" },
-      { property: "og:description", content: "Votre partenaire de confiance pour l'approvisionnement industriel en Afrique." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Teranga Bridge Africa" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
@@ -50,7 +48,7 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
+    <html>
       <head>
         <HeadContent />
       </head>
@@ -63,14 +61,16 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
+  const { pathname } = useLocation();
+  const lang = detectLang(pathname);
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <SiteHeader />
+    <div className="flex min-h-screen flex-col bg-background" lang={lang}>
+      <SiteHeader lang={lang} />
       <main className="flex-1">
         <Outlet />
       </main>
-      <SiteFooter />
-      <WhatsAppButton />
+      <SiteFooter lang={lang} />
+      <WhatsAppButton lang={lang} />
     </div>
   );
 }

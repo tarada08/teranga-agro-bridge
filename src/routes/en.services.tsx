@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ServicesPage } from "@/components/pages/ServicesPage";
 import { pageMeta } from "@/lib/seo";
 
-export const Route = createFileRoute("/services")({
-  head: () => pageMeta("fr", "services"),
-  component: () => <ServicesPage lang="fr" />,
+export const Route = createFileRoute("/en/services")({
+  head: () => pageMeta("en", "services"),
+  component: () => <ServicesPage lang="en" />,
 });

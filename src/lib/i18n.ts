@@ -1,0 +1,152 @@
+export type Lang = "fr" | "en";
+
+export const dict = {
+  fr: {
+    nav: { home: "Accueil", about: "À propos", services: "Services", commitments: "Engagements", contact: "Contact", quote: "Demander un devis" },
+    footer: {
+      tagline: "Partenaire de confiance pour la fourniture de matières premières et d'équipements agroalimentaires en Afrique.",
+      navTitle: "Navigation", contactTitle: "Contact", rights: "Tous droits réservés.",
+    },
+    home: {
+      badge: "Sénégal · Afrique de l'Ouest",
+      title1: "Votre partenaire de confiance pour l'", titleHighlight: "approvisionnement industriel", title2: " en Afrique",
+      lead: "Matières premières, équipements agroalimentaires et solutions logistiques sur mesure pour les industries africaines.",
+      ctaServices: "Nos services", ctaContact: "Nous contacter",
+      h1: "Matières premières", h1d: "Produits agroalimentaires sourcés et certifiés.",
+      h2: "Équipements", h2d: "Machines industrielles adaptées à vos besoins.",
+      h3: "Import / Export", h3d: "Réseau international de partenaires solides.",
+      h4: "Logistique", h4d: "Chaîne d'approvisionnement maîtrisée.",
+      visionTitle: "Une vision africaine de l'industrie",
+      visionText: "Teranga Bridge Africa accompagne les industries locales et régionales en garantissant un approvisionnement fiable, compétitif et adapté à leurs besoins.",
+      visionCta: "En savoir plus",
+      commitments: ["Qualité garantie", "Réseau de partenaires fiables", "Prix compétitifs", "Livraison rapide", "Innovation & durabilité"],
+    },
+    about: {
+      kicker: "À propos", title: "Une passerelle entre l'Afrique et l'industrie",
+      p1: "Teranga Bridge Africa est une entreprise sénégalaise spécialisée dans la fourniture de matières premières et d'équipements agroalimentaires en Afrique.",
+      p2: "Grâce à notre expertise et à un réseau de partenaires solides, nous accompagnons les industries locales et régionales en leur garantissant un approvisionnement fiable, compétitif et adapté à leurs besoins.",
+      p3: "Animés par une vision de croissance durable, nous mettons l'innovation et la qualité au cœur de notre engagement pour contribuer au développement du secteur industriel africain.",
+      cta: "Travaillons ensemble",
+      stats: [{ k: "100%", v: "Approvisionnement fiable" }, { k: "15+", v: "Pays partenaires" }, { k: "24/7", v: "Support logistique" }],
+    },
+    services: {
+      kicker: "Nos services", title: "Des solutions complètes pour l'industrie",
+      lead: "De la matière première à la livraison finale, nous couvrons toute la chaîne de valeur agroalimentaire.",
+      items: [
+        { t: "Matières premières agroalimentaires", d: "Approvisionnement en céréales, oléagineux, additifs et ingrédients industriels conformes aux standards internationaux." },
+        { t: "Import / Export industriel", d: "Sourcing global, gestion des formalités douanières et coordination des flux internationaux." },
+        { t: "Équipements agroalimentaires", d: "Lignes de production, machines de transformation et solutions techniques sur mesure." },
+        { t: "Conseil & accompagnement", d: "Audits, études techniques et accompagnement des industriels dans leurs projets de développement." },
+        { t: "Logistique & supply chain", d: "Transport, stockage et distribution maîtrisés sur l'ensemble du continent africain." },
+      ],
+    },
+    commitments: {
+      kicker: "Nos engagements", title: "Cinq promesses qui font la différence",
+      items: [
+        { t: "Qualité garantie", d: "Produits certifiés et contrôles rigoureux à chaque étape." },
+        { t: "Partenaires fiables", d: "Un réseau international solide et soigneusement sélectionné." },
+        { t: "Prix compétitifs", d: "Le meilleur rapport qualité-prix grâce à notre sourcing optimisé." },
+        { t: "Livraison rapide", d: "Une logistique efficace pour respecter vos délais industriels." },
+        { t: "Innovation & durabilité", d: "Des solutions modernes qui respectent l'environnement." },
+      ],
+      ctaTitle: "Prêt à collaborer avec nous ?", ctaText: "Discutons de votre projet d'approvisionnement industriel.", ctaBtn: "Démarrer la conversation",
+    },
+    contact: {
+      kicker: "Contact", title: "Parlons de votre projet", lead: "Notre équipe vous répond sous 24h ouvrées.",
+      address: "Adresse", phone: "Téléphone", email: "Email",
+      name: "Nom complet", message: "Message", send: "Envoyer le message",
+      ok: "Merci ! Votre client mail s'ouvre…",
+      errName: "Nom requis", errEmail: "Email invalide", errMsg: "Message trop court",
+      mapTitle: "Localisation Teranga Bridge Africa",
+      mailSubject: (n: string) => `Demande de contact — ${n}`,
+    },
+    seo: {
+      home: { title: "Teranga Bridge Africa — Partenaire d'approvisionnement industriel", desc: "Fourniture fiable de matières premières et d'équipements agroalimentaires pour les industries africaines." },
+      about: { title: "À propos — Teranga Bridge Africa", desc: "Entreprise sénégalaise spécialisée dans la fourniture de matières premières et d'équipements agroalimentaires en Afrique." },
+      services: { title: "Nos services — Teranga Bridge Africa", desc: "Matières premières, import/export, équipements agroalimentaires, conseil industriel et logistique." },
+      commitments: { title: "Nos engagements — Teranga Bridge Africa", desc: "Qualité garantie, partenaires fiables, prix compétitifs, livraison rapide et innovation durable." },
+      contact: { title: "Contact — Teranga Bridge Africa", desc: "Contactez Teranga Bridge Africa à Dakar pour vos projets d'approvisionnement agroalimentaire." },
+    },
+    whatsappMsg: "Bonjour Teranga Bridge Africa, je souhaite obtenir des informations.",
+  },
+  en: {
+    nav: { home: "Home", about: "About", services: "Services", commitments: "Commitments", contact: "Contact", quote: "Request a quote" },
+    footer: {
+      tagline: "Trusted partner for the supply of raw materials and food-processing equipment across Africa.",
+      navTitle: "Navigation", contactTitle: "Contact", rights: "All rights reserved.",
+    },
+    home: {
+      badge: "Senegal · West Africa",
+      title1: "Your trusted partner for ", titleHighlight: "industrial sourcing", title2: " across Africa",
+      lead: "Raw materials, food-processing equipment and tailored logistics solutions for African industries.",
+      ctaServices: "Our services", ctaContact: "Contact us",
+      h1: "Raw materials", h1d: "Sourced and certified food-grade products.",
+      h2: "Equipment", h2d: "Industrial machinery tailored to your needs.",
+      h3: "Import / Export", h3d: "A solid international partner network.",
+      h4: "Logistics", h4d: "Mastered supply chain operations.",
+      visionTitle: "An African vision of industry",
+      visionText: "Teranga Bridge Africa supports local and regional industries with reliable, competitive supply tailored to their needs.",
+      visionCta: "Learn more",
+      commitments: ["Guaranteed quality", "Reliable partner network", "Competitive prices", "Fast delivery", "Innovation & sustainability"],
+    },
+    about: {
+      kicker: "About", title: "A bridge between Africa and industry",
+      p1: "Teranga Bridge Africa is a Senegalese company specialized in supplying raw materials and food-processing equipment across Africa.",
+      p2: "Thanks to our expertise and a strong partner network, we support local and regional industries with reliable, competitive supply tailored to their needs.",
+      p3: "Driven by a vision of sustainable growth, we put innovation and quality at the heart of our commitment to Africa's industrial development.",
+      cta: "Let's work together",
+      stats: [{ k: "100%", v: "Reliable supply" }, { k: "15+", v: "Partner countries" }, { k: "24/7", v: "Logistics support" }],
+    },
+    services: {
+      kicker: "Our services", title: "Complete solutions for industry",
+      lead: "From raw materials to final delivery, we cover the entire food-processing value chain.",
+      items: [
+        { t: "Food-grade raw materials", d: "Supply of cereals, oilseeds, additives and industrial ingredients meeting international standards." },
+        { t: "Industrial import / export", d: "Global sourcing, customs handling and coordination of international flows." },
+        { t: "Food-processing equipment", d: "Production lines, processing machines and tailor-made technical solutions." },
+        { t: "Consulting & support", d: "Audits, technical studies and guidance for industrial development projects." },
+        { t: "Logistics & supply chain", d: "Transport, storage and distribution mastered across the African continent." },
+      ],
+    },
+    commitments: {
+      kicker: "Our commitments", title: "Five promises that make the difference",
+      items: [
+        { t: "Guaranteed quality", d: "Certified products and rigorous controls at every stage." },
+        { t: "Reliable partners", d: "A strong, carefully selected international network." },
+        { t: "Competitive prices", d: "Best value for money thanks to optimized sourcing." },
+        { t: "Fast delivery", d: "Efficient logistics that meet your industrial deadlines." },
+        { t: "Innovation & sustainability", d: "Modern solutions that respect the environment." },
+      ],
+      ctaTitle: "Ready to collaborate?", ctaText: "Let's discuss your industrial sourcing project.", ctaBtn: "Start the conversation",
+    },
+    contact: {
+      kicker: "Contact", title: "Let's talk about your project", lead: "Our team replies within one business day.",
+      address: "Address", phone: "Phone", email: "Email",
+      name: "Full name", message: "Message", send: "Send message",
+      ok: "Thanks! Your email client is opening…",
+      errName: "Name required", errEmail: "Invalid email", errMsg: "Message too short",
+      mapTitle: "Teranga Bridge Africa location",
+      mailSubject: (n: string) => `Contact request — ${n}`,
+    },
+    seo: {
+      home: { title: "Teranga Bridge Africa — Industrial sourcing partner in Africa", desc: "Reliable supply of raw materials and food-processing equipment for African industries." },
+      about: { title: "About — Teranga Bridge Africa", desc: "Senegalese company specialized in supplying raw materials and food-processing equipment across Africa." },
+      services: { title: "Services — Teranga Bridge Africa", desc: "Raw materials, import/export, food-processing equipment, consulting and logistics." },
+      commitments: { title: "Commitments — Teranga Bridge Africa", desc: "Guaranteed quality, reliable partners, competitive prices, fast delivery and sustainable innovation." },
+      contact: { title: "Contact — Teranga Bridge Africa", desc: "Contact Teranga Bridge Africa in Dakar for your food-industry sourcing projects." },
+    },
+    whatsappMsg: "Hello Teranga Bridge Africa, I would like to get more information.",
+  },
+} as const;
+
+export const routesByLang: Record<Lang, { home: string; about: string; services: string; commitments: string; contact: string }> = {
+  fr: { home: "/", about: "/a-propos", services: "/services", commitments: "/engagements", contact: "/contact" },
+  en: { home: "/en", about: "/en/about", services: "/en/services", commitments: "/en/commitments", contact: "/en/contact" },
+};
+
+export function otherLangPath(currentPath: string, currentLang: Lang): string {
+  const map: Record<string, string> = currentLang === "fr"
+    ? { "/": "/en", "/a-propos": "/en/about", "/services": "/en/services", "/engagements": "/en/commitments", "/contact": "/en/contact" }
+    : { "/en": "/", "/en/about": "/a-propos", "/en/services": "/services", "/en/commitments": "/engagements", "/en/contact": "/contact" };
+  return map[currentPath] ?? (currentLang === "fr" ? "/en" : "/");
+}
