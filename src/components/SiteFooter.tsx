@@ -4,8 +4,9 @@ import logo from "@/assets/logo.png";
 import { dict, routesByLang, type Lang } from "@/lib/i18n";
 
 export function SiteFooter({ lang }: { lang: Lang }) {
-  const t = dict[lang];
-  const r = routesByLang[lang];
+  const safeLang: Lang = lang === "en" ? "en" : "fr";
+  const t = dict[safeLang];
+  const r = routesByLang[safeLang];
   return (
     <footer className="mt-24 border-t border-border bg-secondary/40">
       <div className="container-page py-14 grid gap-10 md:grid-cols-4">
