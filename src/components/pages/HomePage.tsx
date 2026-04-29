@@ -37,6 +37,9 @@ export function HomePage({ lang }: { lang: Lang }) {
         </div>
       </section>
 
+
+      <EventBanner lang={lang} contactHref={r.contact} />
+
       <section className="container-page py-20">
         <div className="grid gap-6 md:grid-cols-4">
           {items.map((item) => (
