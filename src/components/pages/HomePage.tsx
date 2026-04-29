@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, Globe2, Truck, Sprout, Wrench } from "lucide-react";
 import hero from "@/assets/hero.jpg";
 import { dict, routesByLang, type Lang } from "@/lib/i18n";
+import { EventBanner } from "@/components/EventBanner";
 
 export function HomePage({ lang }: { lang: Lang }) {
   const t = dict[lang].home;
