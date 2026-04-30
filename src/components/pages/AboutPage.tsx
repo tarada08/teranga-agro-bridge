@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import about from "@/assets/about.jpg";
 import { dict, routesByLang, type Lang } from "@/lib/i18n";
+import { QuoteForm } from "@/components/QuoteForm";
 
 const valueIcons = [Handshake, Award, ShieldCheck, MapPin];
 const whyIcons = [Globe2, MapPin, ShieldCheck, Zap];
