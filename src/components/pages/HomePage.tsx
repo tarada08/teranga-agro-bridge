@@ -43,15 +43,16 @@ export function HomePage({ lang }: { lang: Lang }) {
             </a>
           </div>
 
-          <nav aria-label="Quick navigation" className="mt-10 flex flex-wrap gap-2">
+          <nav aria-label={lang === "fr" ? "Navigation rapide vers les sections de la page" : "Quick navigation to page sections"} className="mt-10 flex flex-wrap gap-2">
             {anchors.map((a) => (
               <a
                 key={a.href}
                 href={a.href}
+                aria-label={`${lang === "fr" ? "Aller à la section" : "Go to section"} ${a.label}`}
                 className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/90 backdrop-blur transition-colors hover:bg-white/15 hover:text-white"
               >
                 {a.label}
-                <ArrowRight className="h-3 w-3" />
+                <ArrowRight className="h-3 w-3" aria-hidden="true" />
               </a>
             ))}
           </nav>
@@ -61,67 +62,74 @@ export function HomePage({ lang }: { lang: Lang }) {
 
       <EventBanner lang={lang} contactHref={r.contact} />
 
-      <section id="services" className="container-page py-20 scroll-mt-24">
+      <section id="services" aria-labelledby="services-heading" className="container-page py-20 scroll-mt-24">
         <div className="mb-10 max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-wider text-primary">{dict[lang].services.kicker}</p>
-          <h2 className="mt-2 text-3xl md:text-4xl font-bold text-foreground">{dict[lang].services.title}</h2>
+          <h2 id="services-heading" className="mt-2 text-3xl md:text-4xl font-bold text-foreground">{dict[lang].services.title}</h2>
         </div>
         <div className="grid gap-6 md:grid-cols-4">
           {items.map((item) => (
-            <div key={item.title} className="rounded-xl border border-border bg-card p-6 shadow-soft transition-transform hover:-translate-y-1">
-              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
+            <article key={item.title} className="rounded-xl border border-border bg-card p-6 shadow-soft transition-transform hover:-translate-y-1">
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary" aria-hidden="true">
                 <item.icon className="h-5 w-5" />
               </div>
               <h3 className="mt-4 text-base font-semibold text-foreground">{item.title}</h3>
               <p className="mt-1.5 text-sm text-muted-foreground">{item.text}</p>
-            </div>
+            </article>
           ))}
         </div>
         <div className="mt-8">
           <Link to={r.services} className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
-            {t.ctaServices} <ArrowRight className="h-4 w-4" />
+            {t.ctaServices} <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
       </section>
 
-      <section id="commitments" className="container-page pb-20 scroll-mt-24">
+      <section id="commitments" aria-labelledby="commitments-heading" className="container-page pb-20 scroll-mt-24">
         <div className="rounded-2xl bg-gradient-to-br from-primary to-primary-glow p-8 md:p-14 text-primary-foreground shadow-elegant">
           <div className="grid gap-10 md:grid-cols-2 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold">{t.visionTitle}</h2>
+              <p className="text-sm font-semibold uppercase tracking-wider text-gold">{dict[lang].commitments.kicker}</p>
+              <h2 id="commitments-heading" className="mt-2 text-3xl md:text-4xl font-bold">{t.visionTitle}</h2>
               <p className="mt-4 text-primary-foreground/85 leading-relaxed">{t.visionText}</p>
               <Link to={r.about} className="mt-6 inline-flex items-center gap-2 rounded-md bg-gold px-5 py-2.5 text-sm font-semibold text-gold-foreground shadow-gold">
-                {t.visionCta} <ArrowRight className="h-4 w-4" />
+                {t.visionCta} <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
-            <ul className="space-y-3">
-              {t.commitments.map((cm) => (
-                <li key={cm} className="flex items-center gap-3 text-primary-foreground">
-                  <CheckCircle2 className="h-5 w-5 text-gold shrink-0" />
-                  <span className="font-medium">{cm}</span>
-                </li>
-              ))}
-            </ul>
+            <div>
+              <h3 className="sr-only">{lang === "fr" ? "Nos engagements clés" : "Our key commitments"}</h3>
+              <ul className="space-y-3" aria-label={lang === "fr" ? "Liste de nos engagements" : "List of our commitments"}>
+                {t.commitments.map((cm) => (
+                  <li key={cm} className="flex items-center gap-3 text-primary-foreground">
+                    <CheckCircle2 className="h-5 w-5 text-gold shrink-0" aria-hidden="true" />
+                    <span className="font-medium">{cm}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="contact" className="container-page pb-24 scroll-mt-24">
+      <section id="contact" aria-labelledby="contact-heading" className="container-page pb-24 scroll-mt-24">
         <div className="rounded-2xl border border-border bg-card p-8 md:p-12 shadow-soft">
           <div className="grid gap-8 md:grid-cols-2 items-center">
             <div>
               <p className="text-sm font-semibold uppercase tracking-wider text-primary">{c.kicker}</p>
-              <h2 className="mt-2 text-3xl md:text-4xl font-bold text-foreground">{c.title}</h2>
+              <h2 id="contact-heading" className="mt-2 text-3xl md:text-4xl font-bold text-foreground">{c.title}</h2>
               <p className="mt-3 text-muted-foreground">{c.lead}</p>
               <Link to={r.contact} className="mt-6 inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-elegant transition-transform hover:-translate-y-0.5">
-                {c.send} <ArrowRight className="h-4 w-4" />
+                {c.send} <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
-            <ul className="space-y-3 text-sm text-foreground">
-              <li className="flex items-start gap-3"><MapPin className="h-5 w-5 text-primary shrink-0" /><span>Dakar, Sénégal</span></li>
-              <li className="flex items-start gap-3"><Mail className="h-5 w-5 text-primary shrink-0" /><a href="mailto:contact@terangabridgeafrica.com" className="hover:underline">contact@terangabridgeafrica.com</a></li>
-              <li className="flex items-start gap-3"><Phone className="h-5 w-5 text-primary shrink-0" /><a href="tel:+221000000000" className="hover:underline">+221 00 000 00 00</a></li>
-            </ul>
+            <div>
+              <h3 className="sr-only">{lang === "fr" ? "Coordonnées" : "Contact details"}</h3>
+              <ul className="space-y-3 text-sm text-foreground" aria-label={lang === "fr" ? "Coordonnées" : "Contact details"}>
+                <li className="flex items-start gap-3"><MapPin className="h-5 w-5 text-primary shrink-0" aria-hidden="true" /><span>Dakar, Sénégal</span></li>
+                <li className="flex items-start gap-3"><Mail className="h-5 w-5 text-primary shrink-0" aria-hidden="true" /><a href="mailto:contact@terangabridgeafrica.com" className="hover:underline">contact@terangabridgeafrica.com</a></li>
+                <li className="flex items-start gap-3"><Phone className="h-5 w-5 text-primary shrink-0" aria-hidden="true" /><a href="tel:+221000000000" className="hover:underline">+221 00 000 00 00</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
