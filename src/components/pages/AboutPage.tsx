@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import about from "@/assets/about.jpg";
 import { dict, routesByLang, type Lang } from "@/lib/i18n";
+import { QuoteForm } from "@/components/QuoteForm";
 
 const valueIcons = [Handshake, Award, ShieldCheck, MapPin];
 const whyIcons = [Globe2, MapPin, ShieldCheck, Zap];
@@ -282,36 +283,41 @@ export function AboutPage({ lang }: { lang: Lang }) {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section aria-labelledby="about-cta-heading" className="container-page py-20 md:py-24">
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary to-primary-glow p-10 md:p-16 text-primary-foreground shadow-elegant">
-          <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 20% 20%, var(--gold) 0, transparent 40%), radial-gradient(circle at 80% 80%, var(--primary-glow) 0, transparent 50%)",
-            }}
-            aria-hidden="true"
-          />
-          <div className="relative grid gap-8 md:grid-cols-3 items-center">
-            <div className="md:col-span-2">
-              <h2
-                id="about-cta-heading"
-                className="text-3xl md:text-4xl font-bold leading-tight"
-              >
-                {t.ctaTitle}
-              </h2>
-              <p className="mt-3 text-primary-foreground/85 leading-relaxed max-w-2xl">
-                {t.ctaText}
-              </p>
-            </div>
-            <div className="flex md:justify-end">
-              <Link
-                to={r.contact}
-                className="inline-flex items-center gap-2 rounded-md bg-gold px-6 py-3 text-sm font-semibold text-gold-foreground shadow-gold transition-transform hover:-translate-y-0.5"
-              >
-                {t.cta} <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
+      {/* Quote request form */}
+      <section aria-labelledby="quote-heading" className="container-page py-20 md:py-24">
+        <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-elegant">
+          <div className="grid md:grid-cols-5">
+            <aside className="relative md:col-span-2 bg-gradient-to-br from-primary via-primary to-primary-glow p-10 md:p-12 text-primary-foreground">
+              <div
+                className="absolute inset-0 opacity-20"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(circle at 20% 20%, var(--gold) 0, transparent 40%), radial-gradient(circle at 80% 80%, var(--primary-glow) 0, transparent 50%)",
+                }}
+                aria-hidden="true"
+              />
+              <div className="relative">
+                <p className="text-xs font-semibold uppercase tracking-wider text-gold">
+                  {dict[lang].about.quote.kicker}
+                </p>
+                <h2
+                  id="quote-heading"
+                  className="mt-3 text-3xl md:text-4xl font-bold leading-tight"
+                >
+                  {dict[lang].about.quote.title}
+                </h2>
+                <p className="mt-4 text-primary-foreground/85 leading-relaxed">
+                  {dict[lang].about.quote.lead}
+                </p>
+                <ul className="mt-8 space-y-3 text-sm text-primary-foreground/90">
+                  <li>📅 {lang === "fr" ? "Réponse sous 24h ouvrées" : "Reply within one business day"}</li>
+                  <li>🌍 {lang === "fr" ? "Couverture Afrique de l'Ouest" : "West Africa coverage"}</li>
+                  <li>🤝 {lang === "fr" ? "Accompagnement personnalisé" : "Personalized support"}</li>
+                </ul>
+              </div>
+            </aside>
+            <div className="md:col-span-3 p-8 md:p-12">
+              <QuoteForm lang={lang} />
             </div>
           </div>
         </div>
