@@ -20,6 +20,13 @@ export const dict = {
       visionText: "Teranga Bridge Africa accompagne les industries locales et régionales en garantissant un approvisionnement fiable, compétitif et adapté à leurs besoins.",
       visionCta: "En savoir plus",
       commitments: ["Qualité garantie", "Réseau de partenaires fiables", "Prix compétitifs", "Livraison rapide", "Innovation & durabilité"],
+      statsTitle: "Notre impact en chiffres",
+      stats: [
+        { n: 15, suffix: "+", l: "Pays partenaires" },
+        { n: 200, suffix: "+", l: "Références produits" },
+        { n: 24, suffix: "/7", l: "Support logistique" },
+        { n: 100, suffix: "%", l: "Approvisionnement fiable" },
+      ],
     },
     about: {
       kicker: "À propos", title: "Une passerelle entre l'Afrique et l'industrie",
