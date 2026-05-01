@@ -150,6 +150,13 @@ export const dict = {
       visionText: "Teranga Bridge Africa supports local and regional industries with reliable, competitive supply tailored to their needs.",
       visionCta: "Learn more",
       commitments: ["Guaranteed quality", "Reliable partner network", "Competitive prices", "Fast delivery", "Innovation & sustainability"],
+      statsTitle: "Our impact in numbers",
+      stats: [
+        { n: 15, suffix: "+", l: "Partner countries" },
+        { n: 200, suffix: "+", l: "Product references" },
+        { n: 24, suffix: "/7", l: "Logistics support" },
+        { n: 100, suffix: "%", l: "Reliable supply" },
+      ],
     },
     about: {
       kicker: "About", title: "A bridge between Africa and industry",
