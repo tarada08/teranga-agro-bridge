@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, CheckCircle2, Globe2, Truck, Sprout, Wrench, Mail, Phone, MapPin } from "lucide-react";
+import { ArrowRight, CheckCircle2, Globe2, Truck, Sprout, Wrench, Mail, Phone, MapPin, Sparkles, ChevronDown } from "lucide-react";
 import hero from "@/assets/hero.jpg";
 import { dict, routesByLang, type Lang } from "@/lib/i18n";
 import { EventBanner } from "@/components/EventBanner";
@@ -23,86 +23,133 @@ export function HomePage({ lang }: { lang: Lang }) {
 
   return (
     <>
+      {/* HERO */}
       <section className="relative isolate overflow-hidden">
-        <img src={hero} alt="" width={1920} height={1080} className="absolute inset-0 -z-10 h-full w-full object-cover" />
-        <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
-        <div className="container-page py-28 md:py-40 text-white">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium backdrop-blur">
-            <span className="h-1.5 w-1.5 rounded-full bg-gold" /> {t.badge}
+        <img src={hero} alt="" width={1920} height={1080} className="absolute inset-0 -z-20 h-full w-full object-cover scale-105 animate-fade-in" />
+        <div className="absolute inset-0 -z-10 animate-gradient-pan" style={{ background: "var(--gradient-hero)", backgroundSize: "200% 200%" }} />
+
+        {/* Floating decorative orbs */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-gold/20 blur-3xl animate-float-slow" />
+          <div className="absolute top-1/3 -right-32 h-96 w-96 rounded-full bg-primary-glow/30 blur-3xl animate-float-slower" />
+          <div className="absolute bottom-10 left-1/3 h-56 w-56 rounded-full bg-gold/15 blur-3xl animate-float-slow" style={{ animationDelay: "2s" }} />
+        </div>
+
+        <div className="container-page py-28 md:py-40 text-white relative">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium backdrop-blur animate-fade-up">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inset-0 rounded-full bg-gold animate-pulse-ring" />
+              <span className="relative h-2 w-2 rounded-full bg-gold" />
+            </span>
+            {t.badge}
           </span>
-          <h1 className="mt-5 max-w-3xl text-4xl md:text-6xl font-bold leading-[1.05]">
-            {t.title1}<span className="text-gold">{t.titleHighlight}</span>{t.title2}
+
+          <h1 className="mt-5 max-w-3xl text-4xl md:text-6xl font-bold leading-[1.05] animate-fade-up" style={{ animationDelay: "0.1s" }}>
+            {t.title1}
+            <span className="shimmer-text">{t.titleHighlight}</span>
+            {t.title2}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg text-white/85">{t.lead}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#services" className="inline-flex items-center gap-2 rounded-md bg-gold px-6 py-3 text-sm font-semibold text-gold-foreground shadow-gold transition-transform hover:-translate-y-0.5">
-              {t.ctaServices} <ArrowRight className="h-4 w-4" />
+
+          <p className="mt-6 max-w-2xl text-lg text-white/85 animate-fade-up" style={{ animationDelay: "0.25s" }}>{t.lead}</p>
+
+          <div className="mt-8 flex flex-wrap gap-3 animate-fade-up" style={{ animationDelay: "0.4s" }}>
+            <a href="#services" className="group inline-flex items-center gap-2 rounded-md bg-gold px-6 py-3 text-sm font-semibold text-gold-foreground shadow-gold transition-all hover:-translate-y-0.5 hover:shadow-elegant">
+              {t.ctaServices}
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
-            <a href="#contact" className="inline-flex items-center gap-2 rounded-md border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/20">
+            <a href="#contact" className="group inline-flex items-center gap-2 rounded-md border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/20">
+              <Sparkles className="h-4 w-4 transition-transform group-hover:rotate-12" />
               {t.ctaContact}
             </a>
           </div>
 
-          <nav aria-label={lang === "fr" ? "Navigation rapide vers les sections de la page" : "Quick navigation to page sections"} className="mt-10 flex flex-wrap gap-2">
+          <nav aria-label={lang === "fr" ? "Navigation rapide vers les sections de la page" : "Quick navigation to page sections"} className="mt-10 flex flex-wrap gap-2 animate-fade-up" style={{ animationDelay: "0.55s" }}>
             {anchors.map((a) => (
               <a
                 key={a.href}
                 href={a.href}
                 aria-label={`${lang === "fr" ? "Aller à la section" : "Go to section"} ${a.label}`}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/90 backdrop-blur transition-colors hover:bg-white/15 hover:text-white"
+                className="group inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/90 backdrop-blur transition-all hover:bg-white/15 hover:text-white hover:border-gold/60"
               >
                 {a.label}
-                <ArrowRight className="h-3 w-3" aria-hidden="true" />
+                <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
               </a>
             ))}
           </nav>
+
+          {/* Scroll cue */}
+          <a href="#services" aria-hidden="true" className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-1 text-white/70 hover:text-white transition-colors">
+            <span className="text-[10px] uppercase tracking-[0.2em]">scroll</span>
+            <ChevronDown className="h-5 w-5 animate-bounce-subtle" />
+          </a>
         </div>
       </section>
 
-
       <EventBanner lang={lang} contactHref={r.contact} />
 
+      {/* SERVICES */}
       <section id="services" aria-labelledby="services-heading" className="container-page py-20 scroll-mt-24">
         <div className="mb-10 max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-wider text-primary">{dict[lang].services.kicker}</p>
           <h2 id="services-heading" className="mt-2 text-3xl md:text-4xl font-bold text-foreground">{dict[lang].services.title}</h2>
+          <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-primary to-gold" />
         </div>
+
         <div className="grid gap-6 md:grid-cols-4">
-          {items.map((item) => (
-            <article key={item.title} className="rounded-xl border border-border bg-card p-6 shadow-soft transition-transform hover:-translate-y-1">
-              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary" aria-hidden="true">
+          {items.map((item, i) => (
+            <article
+              key={item.title}
+              className="group relative rounded-xl border border-border bg-card p-6 shadow-soft hover-lift card-glow"
+              style={{ animationDelay: `${i * 0.08}s` }}
+            >
+              <div className="relative flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-primary/15 to-gold/10 text-primary transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3" aria-hidden="true">
                 <item.icon className="h-5 w-5" />
               </div>
-              <h3 className="mt-4 text-base font-semibold text-foreground">{item.title}</h3>
+              <h3 className="mt-4 text-base font-semibold text-foreground transition-colors group-hover:text-primary">{item.title}</h3>
               <p className="mt-1.5 text-sm text-muted-foreground">{item.text}</p>
+              <div className="mt-4 h-px w-0 bg-gradient-to-r from-primary to-gold transition-all duration-500 group-hover:w-full" />
             </article>
           ))}
         </div>
+
         <div className="mt-8">
-          <Link to={r.services} className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
-            {t.ctaServices} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          <Link to={r.services} className="group inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+            {t.ctaServices}
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </Link>
         </div>
       </section>
 
+      {/* COMMITMENTS */}
       <section id="commitments" aria-labelledby="commitments-heading" className="container-page pb-20 scroll-mt-24">
-        <div className="rounded-2xl bg-gradient-to-br from-primary to-primary-glow p-8 md:p-14 text-primary-foreground shadow-elegant">
-          <div className="grid gap-10 md:grid-cols-2 items-center">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary to-primary-glow p-8 md:p-14 text-primary-foreground shadow-elegant">
+          {/* Decorative elements */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+            <div className="absolute -top-20 -right-20 h-80 w-80 rounded-full bg-gold/15 blur-3xl animate-float-slow" />
+            <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-white/10 blur-3xl animate-float-slower" />
+          </div>
+
+          <div className="relative grid gap-10 md:grid-cols-2 items-center">
             <div>
               <p className="text-sm font-semibold uppercase tracking-wider text-gold">{dict[lang].commitments.kicker}</p>
               <h2 id="commitments-heading" className="mt-2 text-3xl md:text-4xl font-bold">{t.visionTitle}</h2>
               <p className="mt-4 text-primary-foreground/85 leading-relaxed">{t.visionText}</p>
-              <Link to={r.about} className="mt-6 inline-flex items-center gap-2 rounded-md bg-gold px-5 py-2.5 text-sm font-semibold text-gold-foreground shadow-gold">
-                {t.visionCta} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              <Link to={r.about} className="group mt-6 inline-flex items-center gap-2 rounded-md bg-gold px-5 py-2.5 text-sm font-semibold text-gold-foreground shadow-gold transition-transform hover:-translate-y-0.5">
+                {t.visionCta}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </Link>
             </div>
             <div>
               <h3 className="sr-only">{lang === "fr" ? "Nos engagements clés" : "Our key commitments"}</h3>
               <ul className="space-y-3" aria-label={lang === "fr" ? "Liste de nos engagements" : "List of our commitments"}>
-                {t.commitments.map((cm) => (
-                  <li key={cm} className="flex items-center gap-3 text-primary-foreground">
-                    <CheckCircle2 className="h-5 w-5 text-gold shrink-0" aria-hidden="true" />
-                    <span className="font-medium">{cm}</span>
+                {t.commitments.map((cm, i) => (
+                  <li
+                    key={cm}
+                    className="group flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 p-3 backdrop-blur transition-all hover:bg-white/10 hover:border-gold/40 hover:translate-x-1"
+                    style={{ animationDelay: `${i * 0.08}s` }}
+                  >
+                    <CheckCircle2 className="h-5 w-5 text-gold shrink-0 transition-transform group-hover:scale-110" aria-hidden="true" />
+                    <span className="font-medium text-primary-foreground">{cm}</span>
                   </li>
                 ))}
               </ul>
@@ -111,23 +158,37 @@ export function HomePage({ lang }: { lang: Lang }) {
         </div>
       </section>
 
+      {/* CONTACT */}
       <section id="contact" aria-labelledby="contact-heading" className="container-page pb-24 scroll-mt-24">
-        <div className="rounded-2xl border border-border bg-card p-8 md:p-12 shadow-soft">
-          <div className="grid gap-8 md:grid-cols-2 items-center">
+        <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-8 md:p-12 shadow-soft hover-lift">
+          <div aria-hidden="true" className="pointer-events-none absolute -top-32 -right-32 h-72 w-72 rounded-full bg-gradient-to-br from-primary/20 to-gold/15 blur-3xl animate-float-slow" />
+
+          <div className="relative grid gap-8 md:grid-cols-2 items-center">
             <div>
               <p className="text-sm font-semibold uppercase tracking-wider text-primary">{c.kicker}</p>
               <h2 id="contact-heading" className="mt-2 text-3xl md:text-4xl font-bold text-foreground">{c.title}</h2>
-              <p className="mt-3 text-muted-foreground">{c.lead}</p>
-              <Link to={r.contact} className="mt-6 inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-elegant transition-transform hover:-translate-y-0.5">
-                {c.send} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              <div className="mt-3 h-1 w-12 rounded-full bg-gradient-to-r from-primary to-gold" />
+              <p className="mt-4 text-muted-foreground">{c.lead}</p>
+              <Link to={r.contact} className="group mt-6 inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-elegant transition-all hover:-translate-y-0.5 hover:bg-primary-glow">
+                {c.send}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </Link>
             </div>
             <div>
               <h3 className="sr-only">{lang === "fr" ? "Coordonnées" : "Contact details"}</h3>
               <ul className="space-y-3 text-sm text-foreground" aria-label={lang === "fr" ? "Coordonnées" : "Contact details"}>
-                <li className="flex items-start gap-3"><MapPin className="h-5 w-5 text-primary shrink-0" aria-hidden="true" /><span>Dakar, Sénégal</span></li>
-                <li className="flex items-start gap-3"><Mail className="h-5 w-5 text-primary shrink-0" aria-hidden="true" /><a href="mailto:contact@terangabridgeafrica.com" className="hover:underline">contact@terangabridgeafrica.com</a></li>
-                <li className="flex items-start gap-3"><Phone className="h-5 w-5 text-primary shrink-0" aria-hidden="true" /><a href="tel:+221000000000" className="hover:underline">+221 00 000 00 00</a></li>
+                <li className="group flex items-start gap-3 rounded-lg border border-border bg-secondary/40 p-3 transition-all hover:border-primary/40 hover:bg-secondary">
+                  <MapPin className="h-5 w-5 text-primary shrink-0 transition-transform group-hover:scale-110" aria-hidden="true" />
+                  <span>Dakar, Sénégal</span>
+                </li>
+                <li className="group flex items-start gap-3 rounded-lg border border-border bg-secondary/40 p-3 transition-all hover:border-primary/40 hover:bg-secondary">
+                  <Mail className="h-5 w-5 text-primary shrink-0 transition-transform group-hover:scale-110" aria-hidden="true" />
+                  <a href="mailto:contact@terangabridgeafrica.com" className="hover:underline">contact@terangabridgeafrica.com</a>
+                </li>
+                <li className="group flex items-start gap-3 rounded-lg border border-border bg-secondary/40 p-3 transition-all hover:border-primary/40 hover:bg-secondary">
+                  <Phone className="h-5 w-5 text-primary shrink-0 transition-transform group-hover:scale-110" aria-hidden="true" />
+                  <a href="tel:+221000000000" className="hover:underline">+221 00 000 00 00</a>
+                </li>
               </ul>
             </div>
           </div>
