@@ -117,7 +117,7 @@ export function ServicesPage({ lang }: { lang: Lang }) {
       </section>
 
       {/* PROCESS */}
-      <section aria-labelledby="process-heading" className="bg-secondary/40 border-y border-border">
+      <section aria-labelledby="process-heading" className="bg-secondary/40 border-y border-border cv-auto">
         <div className="container-page py-20 md:py-24">
           <div className="mb-12 max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-wider text-primary">{t.processKicker}</p>
@@ -153,7 +153,7 @@ export function ServicesPage({ lang }: { lang: Lang }) {
       </section>
 
       {/* SECTORS */}
-      <section aria-labelledby="sectors-heading" className="container-page py-20 md:py-24">
+      <section aria-labelledby="sectors-heading" className="container-page py-20 md:py-24 cv-auto">
         <div className="grid gap-10 md:grid-cols-[1fr_1.4fr] items-start">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wider text-primary">{t.sectorsKicker}</p>
@@ -182,7 +182,7 @@ export function ServicesPage({ lang }: { lang: Lang }) {
       </section>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="bg-secondary/40 border-t border-border">
+      <section aria-labelledby="faq-heading" className="bg-secondary/40 border-t border-border cv-auto">
         <div className="container-page py-20 md:py-24">
           <div className="mb-10 max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-wider text-primary">{t.faqKicker}</p>
@@ -211,7 +211,7 @@ export function ServicesPage({ lang }: { lang: Lang }) {
       </section>
 
       {/* CTA */}
-      <section aria-labelledby="services-cta-heading" className="container-page py-20 md:py-24">
+      <section aria-labelledby="services-cta-heading" className="container-page py-20 md:py-24 cv-auto">
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary to-primary-glow p-8 md:p-14 text-primary-foreground shadow-elegant">
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
             <div className="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-gold/20 blur-3xl animate-float-slow" />

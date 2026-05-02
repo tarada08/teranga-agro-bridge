@@ -177,6 +177,12 @@
 @utility animate-gradient-pan { background-size: 200% 200%; animation: gradient-pan 8s ease infinite; }
 @utility animate-bounce-subtle { animation: bounce-subtle 2s ease-in-out infinite; }
 
+/* Defer offscreen rendering work for sections below the fold */
+@utility cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 600px;
+}
+
 @utility shimmer-text {
   background: linear-gradient(90deg, var(--gold) 0%, oklch(0.92 0.16 90) 50%, var(--gold) 100%);
   background-size: 200% 100%;

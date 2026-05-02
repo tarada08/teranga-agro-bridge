@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, Globe2, Truck, Sprout, Wrench, Mail, Phone, MapPin, Sparkles, ChevronDown } from "lucide-react";
-import hero from "@/assets/hero.jpg";
+import hero from "@/assets/hero.webp";
 import { dict, routesByLang, type Lang } from "@/lib/i18n";
 import { EventBanner } from "@/components/EventBanner";
 
@@ -25,7 +25,7 @@ export function HomePage({ lang }: { lang: Lang }) {
     <>
       {/* HERO */}
       <section className="relative isolate overflow-hidden">
-        <img src={hero} alt="" width={1920} height={1080} className="absolute inset-0 -z-20 h-full w-full object-cover scale-105 animate-fade-in" />
+        <img src={hero} alt="" width={1920} height={1080} fetchPriority="high" decoding="async" className="absolute inset-0 -z-20 h-full w-full object-cover scale-105 animate-fade-in" />
         <div className="absolute inset-0 -z-10 animate-gradient-pan" style={{ background: "var(--gradient-hero)", backgroundSize: "200% 200%" }} />
 
         {/* Floating decorative orbs */}

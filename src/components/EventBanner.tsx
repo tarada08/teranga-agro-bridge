@@ -1,5 +1,5 @@
 import { Calendar, MapPin } from "lucide-react";
-import senefood from "@/assets/senefood-2026.jpg";
+import senefood from "@/assets/senefood-2026.webp";
 import type { Lang } from "@/lib/i18n";
 
 const content = {
