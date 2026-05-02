@@ -25,7 +25,7 @@ export function SiteHeader({ lang }: { lang: Lang }) {
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/85 backdrop-blur-md">
       <div className="container-page flex h-16 items-center justify-between">
         <Link to={r.home} className="flex items-center gap-2.5 font-display font-bold text-foreground">
-          <img src={logo} alt="Teranga Bridge Africa" width={36} height={36} className="h-9 w-9" />
+          <img src={logo} alt="Teranga Bridge Africa" width={36} height={36} className="h-9 w-9" decoding="async" fetchPriority="high" />
           <span className="hidden sm:inline text-base leading-tight">
             Teranga Bridge <span className="text-primary">Africa</span>
           </span>
