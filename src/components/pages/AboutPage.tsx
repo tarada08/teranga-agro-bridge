@@ -12,7 +12,7 @@ import {
   Zap,
   CheckCircle2,
 } from "lucide-react";
-import about from "@/assets/about.jpg";
+import about from "@/assets/about.webp";
 import { dict, routesByLang, type Lang } from "@/lib/i18n";
 import { QuoteForm } from "@/components/QuoteForm";
 
