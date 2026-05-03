@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle2, Globe2, Truck, Sprout, Wrench, Mail, Phone, M
 import hero from "@/assets/hero.webp";
 import { dict, routesByLang, type Lang } from "@/lib/i18n";
 import { EventBanner } from "@/components/EventBanner";
+import { CountUp } from "@/components/CountUp";
 
 export function HomePage({ lang }: { lang: Lang }) {
   const t = dict[lang].home;
@@ -120,7 +121,9 @@ export function HomePage({ lang }: { lang: Lang }) {
               className="group rounded-xl border border-border bg-card p-5 text-center shadow-soft hover-lift card-glow"
               style={{ animationDelay: `${i * 0.06}s` }}
             >
-              <p className="font-display text-3xl md:text-4xl font-bold bg-gradient-to-br from-primary to-gold bg-clip-text text-transparent">{s.k}</p>
+              <p className="font-display text-3xl md:text-4xl font-bold bg-gradient-to-br from-primary to-gold bg-clip-text text-transparent">
+                <CountUp value={s.k} />
+              </p>
               <p className="mt-1.5 text-xs md:text-sm text-muted-foreground">{s.v}</p>
             </div>
           ))}
