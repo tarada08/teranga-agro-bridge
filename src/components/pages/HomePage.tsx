@@ -87,6 +87,46 @@ export function HomePage({ lang }: { lang: Lang }) {
 
       <EventBanner lang={lang} contactHref={r.contact} />
 
+      {/* SLOGAN */}
+      <section aria-label={t.sloganKicker} className="container-page pb-4">
+        <div className="relative overflow-hidden rounded-2xl border border-gold/30 bg-gradient-to-br from-primary via-primary to-primary-glow p-8 md:p-12 text-primary-foreground shadow-elegant">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+            <div className="absolute -top-16 -right-16 h-64 w-64 rounded-full bg-gold/20 blur-3xl animate-float-slow" />
+            <div className="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-white/10 blur-3xl animate-float-slower" />
+          </div>
+          <div className="relative flex flex-col md:flex-row items-start md:items-center gap-6">
+            <Quote className="h-12 w-12 text-gold shrink-0" aria-hidden="true" />
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">{t.sloganKicker}</p>
+              <p className="mt-2 font-display text-2xl md:text-4xl font-bold leading-tight">
+                « {t.slogan} »
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* STATS */}
+      <section aria-labelledby="stats-heading" className="container-page py-16">
+        <div className="mb-8 max-w-2xl">
+          <p className="text-sm font-semibold uppercase tracking-wider text-primary">{t.statsKicker}</p>
+          <h2 id="stats-heading" className="mt-2 text-3xl md:text-4xl font-bold text-foreground">{t.statsTitle}</h2>
+          <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-primary to-gold" />
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+          {t.stats.map((s, i) => (
+            <div
+              key={s.v}
+              className="group rounded-xl border border-border bg-card p-5 text-center shadow-soft hover-lift card-glow"
+              style={{ animationDelay: `${i * 0.06}s` }}
+            >
+              <p className="font-display text-3xl md:text-4xl font-bold bg-gradient-to-br from-primary to-gold bg-clip-text text-transparent">{s.k}</p>
+              <p className="mt-1.5 text-xs md:text-sm text-muted-foreground">{s.v}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* SERVICES */}
       <section id="services" aria-labelledby="services-heading" className="container-page py-20 scroll-mt-24">
         <div className="mb-10 max-w-2xl">
@@ -179,7 +219,7 @@ export function HomePage({ lang }: { lang: Lang }) {
               <ul className="space-y-3 text-sm text-foreground" aria-label={lang === "fr" ? "Coordonnées" : "Contact details"}>
                 <li className="group flex items-start gap-3 rounded-lg border border-border bg-secondary/40 p-3 transition-all hover:border-primary/40 hover:bg-secondary">
                   <MapPin className="h-5 w-5 text-primary shrink-0 transition-transform group-hover:scale-110" aria-hidden="true" />
-                  <span>Dakar, Sénégal</span>
+                  <span>4P - 6, Imm. Elh Omar DIA, Boulevard de l'Est x Rue 9 Point E, Dakar (SN)</span>
                 </li>
                 <li className="group flex items-start gap-3 rounded-lg border border-border bg-secondary/40 p-3 transition-all hover:border-primary/40 hover:bg-secondary">
                   <Mail className="h-5 w-5 text-primary shrink-0 transition-transform group-hover:scale-110" aria-hidden="true" />
@@ -187,7 +227,7 @@ export function HomePage({ lang }: { lang: Lang }) {
                 </li>
                 <li className="group flex items-start gap-3 rounded-lg border border-border bg-secondary/40 p-3 transition-all hover:border-primary/40 hover:bg-secondary">
                   <Phone className="h-5 w-5 text-primary shrink-0 transition-transform group-hover:scale-110" aria-hidden="true" />
-                  <a href="tel:+221000000000" className="hover:underline">+221 00 000 00 00</a>
+                  <a href="tel:+221783073636" className="hover:underline">+221 78 307 36 36</a>
                 </li>
               </ul>
             </div>

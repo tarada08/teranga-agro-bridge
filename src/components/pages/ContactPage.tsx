@@ -42,14 +42,14 @@ export function ContactPage({ lang }: { lang: Lang }) {
 
       <div className="mt-12 grid gap-10 lg:grid-cols-5">
         <div className="lg:col-span-2 space-y-5">
-          <InfoCard icon={MapPin} title={t.address}>Sacré Cœur 3 VDN, 57<br />Dakar, Sénégal</InfoCard>
-          <InfoCard icon={Phone} title={t.phone}><a href="tel:+221338920721" className="hover:text-primary">+221 33 892 07 21</a></InfoCard>
+          <InfoCard icon={MapPin} title={t.address}>4P - 6, Imm. Elh Omar DIA,<br />Boulevard de l'Est x Rue 9, Point E<br />Dakar (SN)</InfoCard>
+          <InfoCard icon={Phone} title={t.phone}><a href="tel:+221783073636" className="hover:text-primary">+221 78 307 36 36</a></InfoCard>
           <InfoCard icon={Mail} title={t.email}><a href="mailto:contact@terangabridgeafrica.com" className="hover:text-primary break-all">contact@terangabridgeafrica.com</a></InfoCard>
 
           <div className="overflow-hidden rounded-2xl border border-border shadow-soft">
             <iframe
               title={t.mapTitle}
-              src="https://www.google.com/maps?q=Sacre+Coeur+3+VDN+Dakar+Senegal&output=embed"
+              src="https://www.google.com/maps?q=Boulevard+de+l'Est+Point+E+Dakar+Senegal&output=embed"
               width="100%"
               height="260"
               loading="lazy"
