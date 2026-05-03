@@ -4,6 +4,7 @@ import hero from "@/assets/hero.webp";
 import { dict, routesByLang, type Lang } from "@/lib/i18n";
 import { EventBanner } from "@/components/EventBanner";
 import { CountUp } from "@/components/CountUp";
+import { LazyVideo } from "@/components/LazyVideo";
 
 export function HomePage({ lang }: { lang: Lang }) {
   const t = dict[lang].home;
