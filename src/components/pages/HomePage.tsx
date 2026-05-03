@@ -4,6 +4,7 @@ import hero from "@/assets/hero.webp";
 import { dict, routesByLang, type Lang } from "@/lib/i18n";
 import { EventBanner } from "@/components/EventBanner";
 import { CountUp } from "@/components/CountUp";
+import { LazyVideo } from "@/components/LazyVideo";
 
 export function HomePage({ lang }: { lang: Lang }) {
   const t = dict[lang].home;
@@ -118,16 +119,17 @@ export function HomePage({ lang }: { lang: Lang }) {
             <p className="mt-4 text-sm font-semibold text-foreground">{t.videoThanks}</p>
           </div>
           <div className="lg:col-span-3">
-            <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-elegant hover-lift">
-              <video
-                src="/videos/tba.mp4"
-                controls
-                preload="metadata"
-                playsInline
-                className="block w-full h-auto aspect-video bg-black"
-              >
-                <track kind="captions" />
-              </video>
+            <div className="relative mx-auto max-w-sm overflow-hidden rounded-2xl border border-border shadow-elegant hover-lift">
+              <LazyVideo
+                sources={[
+                  { src: "/videos/tba.webm", type: "video/webm" },
+                  { src: "/videos/tba.mp4", type: "video/mp4" },
+                ]}
+                poster="/videos/tba-poster.jpg"
+                width={464}
+                height={832}
+                label={lang === "fr" ? "Lire la vidéo Teranga Bridge Africa" : "Play the Teranga Bridge Africa video"}
+              />
             </div>
           </div>
         </div>
