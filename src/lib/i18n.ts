@@ -24,6 +24,10 @@ export const dict = {
       sloganKicker: "Notre concept",
       statsKicker: "Chiffres clés",
       statsTitle: "Une présence qui fait la différence",
+      videoKicker: "Notre vision en mouvement",
+      videoTitle: "L'aventure Teranga Bridge Africa",
+      videoText: "Chez Teranga Bridge Africa, nous croyons que l'impact se construit par l'action, l'innovation et l'engagement collectif. Cette vidéo illustre notre vision, notre énergie et surtout les personnes qui font avancer nos projets au quotidien.",
+      videoThanks: "👉 Merci à toutes celles et ceux qui contribuent à cette dynamique. L'aventure continue.",
       stats: [
         { k: "5 000+", v: "Visiteurs attendus" },
         { k: "200+", v: "Exposants" },
@@ -182,6 +186,10 @@ export const dict = {
       sloganKicker: "Our concept",
       statsKicker: "Key figures",
       statsTitle: "A presence that makes a difference",
+      videoKicker: "Our vision in motion",
+      videoTitle: "The Teranga Bridge Africa journey",
+      videoText: "At Teranga Bridge Africa, we believe impact is built through action, innovation and collective commitment. This video reflects our vision, our energy and — above all — the people who move our projects forward every day.",
+      videoThanks: "👉 Thanks to everyone contributing to this momentum. The journey continues.",
       stats: [
         { k: "5,000+", v: "Expected visitors" },
         { k: "200+", v: "Exhibitors" },

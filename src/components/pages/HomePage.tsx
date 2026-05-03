@@ -107,6 +107,32 @@ export function HomePage({ lang }: { lang: Lang }) {
         </div>
       </section>
 
+      {/* VIDEO */}
+      <section aria-labelledby="video-heading" className="container-page py-16">
+        <div className="grid gap-10 lg:grid-cols-5 items-center">
+          <div className="lg:col-span-2">
+            <p className="text-sm font-semibold uppercase tracking-wider text-primary">{t.videoKicker}</p>
+            <h2 id="video-heading" className="mt-2 text-3xl md:text-4xl font-bold text-foreground">{t.videoTitle}</h2>
+            <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-primary to-gold" />
+            <p className="mt-5 text-muted-foreground leading-relaxed">{t.videoText}</p>
+            <p className="mt-4 text-sm font-semibold text-foreground">{t.videoThanks}</p>
+          </div>
+          <div className="lg:col-span-3">
+            <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-elegant hover-lift">
+              <video
+                src="/videos/tba.mp4"
+                controls
+                preload="metadata"
+                playsInline
+                className="block w-full h-auto aspect-video bg-black"
+              >
+                <track kind="captions" />
+              </video>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* STATS */}
       <section aria-labelledby="stats-heading" className="container-page py-16">
         <div className="mb-8 max-w-2xl">
