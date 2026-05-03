@@ -31,8 +31,8 @@ export function SiteFooter({ lang }: { lang: Lang }) {
         <div>
           <h3 className="text-sm font-semibold text-foreground">{t.footer.contactTitle}</h3>
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-            <li className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-0.5 text-primary shrink-0" />Sacré Cœur 3 VDN, 57, Dakar, Sénégal</li>
-            <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-primary" /><a href="tel:+221338920721" className="hover:text-primary">+221 33 892 07 21</a></li>
+            <li className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-0.5 text-primary shrink-0" />4P - 6, Imm. Elh Omar DIA, Boulevard de l'Est x Rue 9 Point E, Dakar (SN)</li>
+            <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-primary" /><a href="tel:+221783073636" className="hover:text-primary">+221 78 307 36 36</a></li>
             <li className="flex items-center gap-2"><Mail className="h-4 w-4 text-primary" /><a href="mailto:contact@terangabridgeafrica.com" className="hover:text-primary break-all">contact@terangabridgeafrica.com</a></li>
           </ul>
         </div>

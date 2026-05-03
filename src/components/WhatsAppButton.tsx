@@ -1,7 +1,7 @@
 import { dict, type Lang } from "@/lib/i18n";
 
 export function WhatsAppButton({ lang }: { lang: Lang }) {
-  const phone = "221338920721";
+  const phone = "221783073636";
   const text = encodeURIComponent(dict[lang].whatsappMsg);
   return (
     <a
