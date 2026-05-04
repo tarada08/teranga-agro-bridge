@@ -1,6 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, Globe2, Truck, Sprout, Wrench, Mail, Phone, MapPin, Sparkles, ChevronDown, Quote } from "lucide-react";
-import hero from "@/assets/hero.webp";
+import heroPort from "@/assets/hero-port.jpg";
+import heroCommodities from "@/assets/hero-commodities.jpg";
+import heroFactory from "@/assets/hero-factory.jpg";
+import heroTeam from "@/assets/hero-team.jpg";
 import { dict, routesByLang, type Lang } from "@/lib/i18n";
 import { EventBanner } from "@/components/EventBanner";
 import { CountUp } from "@/components/CountUp";
@@ -26,9 +29,18 @@ export function HomePage({ lang }: { lang: Lang }) {
   return (
     <>
       {/* HERO */}
-      <section className="relative isolate overflow-hidden">
-        <img src={hero} alt="" width={1920} height={1080} fetchPriority="high" decoding="async" className="absolute inset-0 -z-20 h-full w-full object-cover scale-105 animate-fade-in" />
-        <div className="absolute inset-0 -z-10 animate-gradient-pan" style={{ background: "var(--gradient-hero)", backgroundSize: "200% 200%" }} />
+      <section className="relative isolate overflow-hidden bg-[oklch(0.18_0.04_155)]">
+        {/* Mosaic background */}
+        <div aria-hidden="true" className="absolute inset-0 -z-20 grid grid-cols-2 grid-rows-2 md:grid-cols-4 md:grid-rows-2 gap-1">
+          <img src={heroPort} alt="" width={1024} height={1280} fetchPriority="high" decoding="async" className="h-full w-full object-cover md:col-span-2 md:row-span-2 animate-fade-in" />
+          <img src={heroCommodities} alt="" width={1024} height={1024} loading="lazy" decoding="async" className="h-full w-full object-cover animate-fade-in" style={{ animationDelay: "0.15s" }} />
+          <img src={heroFactory} alt="" width={1024} height={1024} loading="lazy" decoding="async" className="h-full w-full object-cover animate-fade-in" style={{ animationDelay: "0.3s" }} />
+          <img src={heroTeam} alt="" width={1024} height={1280} loading="lazy" decoding="async" className="hidden md:block h-full w-full object-cover col-span-2 animate-fade-in" style={{ animationDelay: "0.45s" }} />
+        </div>
+        {/* Dark overlay for legibility */}
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-br from-black/80 via-black/65 to-primary/70" />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 animate-gradient-pan opacity-60" style={{ background: "var(--gradient-hero)", backgroundSize: "200% 200%" }} />
+
 
         {/* Floating decorative orbs */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
