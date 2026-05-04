@@ -23,7 +23,29 @@ export function SiteHeader({ lang }: { lang: Lang }) {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/85 backdrop-blur-md">
+      {/* Brand marquee bar */}
+      <div
+        aria-hidden="true"
+        className="relative overflow-hidden border-b border-gold/20 bg-gradient-to-r from-primary via-primary-glow to-primary text-primary-foreground"
+      >
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-primary to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-primary to-transparent" />
+        <div className="flex w-max animate-marquee py-1.5">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <span
+              key={i}
+              className="flex shrink-0 items-center gap-3 px-6 font-display text-[11px] font-bold uppercase tracking-[0.35em]"
+            >
+              <span className="bg-gradient-to-r from-gold via-white to-gold bg-clip-text text-transparent">
+                Teranga Bridge Africa
+              </span>
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold shadow-[0_0_8px_var(--gold)]" />
+            </span>
+          ))}
+        </div>
+      </div>
       <div className="container-page flex h-16 items-center justify-between">
+
         <Link to={r.home} className="flex items-center gap-2.5 font-display font-bold text-foreground">
           <img src={logo} alt="Teranga Bridge Africa" width={36} height={36} className="h-9 w-9" decoding="async" fetchPriority="high" />
           <span className="hidden sm:inline text-base leading-tight">
