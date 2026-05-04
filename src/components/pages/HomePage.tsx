@@ -1,6 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, Globe2, Truck, Sprout, Wrench, Mail, Phone, MapPin, Sparkles, ChevronDown, Quote } from "lucide-react";
-import hero from "@/assets/hero.webp";
+import heroPort from "@/assets/hero-port.jpg";
+import heroCommodities from "@/assets/hero-commodities.jpg";
+import heroFactory from "@/assets/hero-factory.jpg";
+import heroTeam from "@/assets/hero-team.jpg";
 import { dict, routesByLang, type Lang } from "@/lib/i18n";
 import { EventBanner } from "@/components/EventBanner";
 import { CountUp } from "@/components/CountUp";
