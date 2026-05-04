@@ -128,7 +128,8 @@ export function HomePage({ lang }: { lang: Lang }) {
                 poster="/videos/tba-poster.jpg"
                 width={464}
                 height={832}
-                label={lang === "fr" ? "Lire la vidéo Teranga Bridge Africa" : "Play the Teranga Bridge Africa video"}
+                label={lang === "fr" ? "Lire la vidéo de présentation Teranga Bridge Africa" : "Play the Teranga Bridge Africa presentation video"}
+                posterAlt={lang === "fr" ? "Aperçu de la vidéo de présentation Teranga Bridge Africa" : "Preview of the Teranga Bridge Africa presentation video"}
               />
             </div>
           </div>
