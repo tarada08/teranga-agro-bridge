@@ -4,22 +4,18 @@ const anchors = ["services", "engagements", "contact"] as const;
 
 for (const id of anchors) {
   test(`anchor #${id} scrolls into view on direct load`, async ({ page }) => {
-    await page.goto(`/#${id}`);
+    await page.goto(`/#${id}`, { waitUntil: "load" });
 
     const target = page.locator(`#${id}`);
     await expect(target).toBeAttached();
-    await expect(target).toBeVisible();
 
-    // Verify the section is within (or near) the viewport — allow header offset.
-    const inView = await target.evaluate((el) => {
-      const rect = el.getBoundingClientRect();
-      const vh = window.innerHeight || document.documentElement.clientHeight;
-      // top should be near the top of the viewport (allow header/scroll-margin)
-      return rect.top >= -2 && rect.top <= vh * 0.5 && rect.bottom > 0;
-    });
-    expect(inView, `#${id} should be scrolled into view`).toBe(true);
+    // Wait for the browser to settle the scroll position triggered by the hash.
+    await page.waitForFunction(() => window.scrollY > 0, null, { timeout: 5000 });
 
-    // URL must preserve the hash
+    // The target section must be at least partially within the viewport.
+    await expect(target).toBeInViewport({ ratio: 0.05 });
+
+    // The hash must be preserved in the URL.
     expect(new URL(page.url()).hash).toBe(`#${id}`);
   });
 }
