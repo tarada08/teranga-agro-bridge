@@ -153,13 +153,16 @@ export function HomePage({ lang }: { lang: Lang }) {
             <p className="mt-4 text-sm font-semibold text-foreground">{t.videoThanks}</p>
           </div>
           <div className="lg:col-span-3">
-            <div className="relative mx-auto max-w-sm overflow-hidden rounded-2xl border border-border shadow-elegant hover-lift">
+            <div className="relative mx-auto w-full max-w-[280px] sm:max-w-xs md:max-w-sm overflow-hidden rounded-2xl border border-border shadow-elegant hover-lift">
               <LazyVideo
                 sources={[
-                  { src: "/videos/tba.webm", type: "video/webm" },
-                  { src: "/videos/tba.mp4", type: "video/mp4" },
+                  { src: "/videos/tba-mobile.webm", type: "video/webm", media: "(max-width: 767px)" },
+                  { src: "/videos/tba-mobile.mp4", type: "video/mp4", media: "(max-width: 767px)" },
+                  { src: "/videos/tba.webm", type: "video/webm", media: "(min-width: 768px)" },
+                  { src: "/videos/tba.mp4", type: "video/mp4", media: "(min-width: 768px)" },
                 ]}
                 poster="/videos/tba-poster.jpg"
+                posterMobile="/videos/tba-poster-mobile.jpg"
                 width={464}
                 height={832}
                 label={lang === "fr" ? "Lire la vidéo de présentation Teranga Bridge Africa" : "Play the Teranga Bridge Africa presentation video"}
