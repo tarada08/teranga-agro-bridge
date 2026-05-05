@@ -227,6 +227,7 @@ export function HomePage({ lang }: { lang: Lang }) {
       </section>
 
       {/* COMMITMENTS */}
+      <span id="engagements" aria-hidden="true" className="block scroll-mt-24" />
       <section id="commitments" aria-labelledby="commitments-heading" className="container-page pb-20 scroll-mt-24">
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary to-primary-glow p-8 md:p-14 text-primary-foreground shadow-elegant">
           {/* Decorative elements */}
