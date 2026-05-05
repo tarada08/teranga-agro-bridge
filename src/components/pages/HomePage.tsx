@@ -30,17 +30,18 @@ export function HomePage({ lang }: { lang: Lang }) {
     <>
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-[oklch(0.18_0.04_155)]">
-        {/* Mosaic background */}
-        <div aria-hidden="true" className="absolute inset-0 -z-20 grid grid-cols-2 grid-rows-2 md:grid-cols-4 md:grid-rows-2 gap-1">
-          <img src={heroPort} alt="" width={1024} height={1280} fetchPriority="high" decoding="async" className="h-full w-full object-cover md:col-span-2 md:row-span-2 animate-fade-in" />
+        {/* Mobile/tablet: full background mosaic */}
+        <div aria-hidden="true" className="absolute inset-0 -z-20 grid grid-cols-2 grid-rows-2 gap-1 lg:hidden">
+          <img src={heroPort} alt="" width={1024} height={1024} fetchPriority="high" decoding="async" className="h-full w-full object-cover animate-fade-in" />
           <img src={heroCommodities} alt="" width={1024} height={1024} loading="lazy" decoding="async" className="h-full w-full object-cover animate-fade-in" style={{ animationDelay: "0.15s" }} />
           <img src={heroFactory} alt="" width={1024} height={1024} loading="lazy" decoding="async" className="h-full w-full object-cover animate-fade-in" style={{ animationDelay: "0.3s" }} />
-          <img src={heroTeam} alt="" width={1024} height={1280} loading="lazy" decoding="async" className="hidden md:block h-full w-full object-cover col-span-2 animate-fade-in" style={{ animationDelay: "0.45s" }} />
+          <img src={heroTeam} alt="" width={1024} height={1024} loading="lazy" decoding="async" className="h-full w-full object-cover animate-fade-in" style={{ animationDelay: "0.45s" }} />
         </div>
-        {/* Dark overlay for legibility */}
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-br from-black/80 via-black/65 to-primary/70" />
-        <div aria-hidden="true" className="absolute inset-0 -z-10 animate-gradient-pan opacity-60" style={{ background: "var(--gradient-hero)", backgroundSize: "200% 200%" }} />
-
+        {/* Mobile overlay */}
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-br from-black/80 via-black/65 to-primary/70 lg:hidden" />
+        {/* Desktop: solid gradient background */}
+        <div aria-hidden="true" className="absolute inset-0 -z-20 hidden lg:block" style={{ background: "linear-gradient(135deg, oklch(0.22 0.05 155), oklch(0.32 0.09 155) 60%, oklch(0.42 0.11 155))" }} />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 animate-gradient-pan opacity-40 hidden lg:block" style={{ background: "var(--gradient-hero)", backgroundSize: "200% 200%" }} />
 
         {/* Floating decorative orbs */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
@@ -49,47 +50,67 @@ export function HomePage({ lang }: { lang: Lang }) {
           <div className="absolute bottom-10 left-1/3 h-56 w-56 rounded-full bg-gold/15 blur-3xl animate-float-slow" style={{ animationDelay: "2s" }} />
         </div>
 
-        <div className="container-page py-28 md:py-40 text-white relative">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium backdrop-blur animate-fade-up">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inset-0 rounded-full bg-gold animate-pulse-ring" />
-              <span className="relative h-2 w-2 rounded-full bg-gold" />
-            </span>
-            {t.badge}
-          </span>
+        <div className="container-page py-24 md:py-32 lg:py-36 text-white relative">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            {/* Left column — text */}
+            <div className="lg:col-span-7 xl:col-span-6">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium backdrop-blur animate-fade-up">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inset-0 rounded-full bg-gold animate-pulse-ring" />
+                  <span className="relative h-2 w-2 rounded-full bg-gold" />
+                </span>
+                {t.badge}
+              </span>
 
-          <h1 className="mt-5 max-w-3xl text-4xl md:text-6xl font-bold leading-[1.05] animate-fade-up" style={{ animationDelay: "0.1s" }}>
-            {t.title1}
-            <span className="shimmer-text">{t.titleHighlight}</span>
-            {t.title2}
-          </h1>
+              <h1 className="mt-5 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight animate-fade-up" style={{ animationDelay: "0.1s" }}>
+                {t.title1}
+                <span className="shimmer-text">{t.titleHighlight}</span>
+                {t.title2}
+              </h1>
 
-          <p className="mt-6 max-w-2xl text-lg text-white/85 animate-fade-up" style={{ animationDelay: "0.25s" }}>{t.lead}</p>
+              <p className="mt-6 max-w-xl text-base md:text-lg leading-relaxed text-white/85 animate-fade-up" style={{ animationDelay: "0.25s" }}>{t.lead}</p>
 
-          <div className="mt-8 flex flex-wrap gap-3 animate-fade-up" style={{ animationDelay: "0.4s" }}>
-            <a href="#services" className="group inline-flex items-center gap-2 rounded-md bg-gold px-6 py-3 text-sm font-semibold text-gold-foreground shadow-gold transition-all hover:-translate-y-0.5 hover:shadow-elegant">
-              {t.ctaServices}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-            <a href="#contact" className="group inline-flex items-center gap-2 rounded-md border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/20">
-              <Sparkles className="h-4 w-4 transition-transform group-hover:rotate-12" />
-              {t.ctaContact}
-            </a>
+              <div className="mt-8 flex flex-wrap gap-3 animate-fade-up" style={{ animationDelay: "0.4s" }}>
+                <a href="#services" className="group inline-flex items-center gap-2 rounded-md bg-gold px-6 py-3 text-sm font-semibold text-gold-foreground shadow-gold transition-all hover:-translate-y-0.5 hover:shadow-elegant">
+                  {t.ctaServices}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
+                <a href="#contact" className="group inline-flex items-center gap-2 rounded-md border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/20">
+                  <Sparkles className="h-4 w-4 transition-transform group-hover:rotate-12" />
+                  {t.ctaContact}
+                </a>
+              </div>
+
+              <nav aria-label={lang === "fr" ? "Navigation rapide vers les sections de la page" : "Quick navigation to page sections"} className="mt-10 flex flex-wrap gap-2 animate-fade-up" style={{ animationDelay: "0.55s" }}>
+                {anchors.map((a) => (
+                  <a
+                    key={a.href}
+                    href={a.href}
+                    aria-label={`${lang === "fr" ? "Aller à la section" : "Go to section"} ${a.label}`}
+                    className="group inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/90 backdrop-blur transition-all hover:bg-white/15 hover:text-white hover:border-gold/60"
+                  >
+                    {a.label}
+                    <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+                  </a>
+                ))}
+              </nav>
+            </div>
+
+            {/* Right column — image mosaic (desktop only) */}
+            <div className="hidden lg:block lg:col-span-5 xl:col-span-6">
+              <div className="relative grid grid-cols-2 gap-3 animate-fade-up" style={{ animationDelay: "0.2s" }}>
+                <div className="space-y-3">
+                  <img src={heroPort} alt="" width={600} height={800} loading="eager" decoding="async" className="aspect-[3/4] w-full rounded-2xl object-cover shadow-elegant ring-1 ring-white/10" />
+                  <img src={heroFactory} alt="" width={600} height={400} loading="lazy" decoding="async" className="aspect-[3/2] w-full rounded-2xl object-cover shadow-elegant ring-1 ring-white/10" />
+                </div>
+                <div className="space-y-3 pt-10">
+                  <img src={heroCommodities} alt="" width={600} height={400} loading="lazy" decoding="async" className="aspect-[3/2] w-full rounded-2xl object-cover shadow-elegant ring-1 ring-white/10" />
+                  <img src={heroTeam} alt="" width={600} height={800} loading="lazy" decoding="async" className="aspect-[3/4] w-full rounded-2xl object-cover shadow-elegant ring-1 ring-white/10" />
+                </div>
+                <div aria-hidden="true" className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-gold/20 via-transparent to-primary-glow/20 blur-2xl" />
+              </div>
+            </div>
           </div>
-
-          <nav aria-label={lang === "fr" ? "Navigation rapide vers les sections de la page" : "Quick navigation to page sections"} className="mt-10 flex flex-wrap gap-2 animate-fade-up" style={{ animationDelay: "0.55s" }}>
-            {anchors.map((a) => (
-              <a
-                key={a.href}
-                href={a.href}
-                aria-label={`${lang === "fr" ? "Aller à la section" : "Go to section"} ${a.label}`}
-                className="group inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/90 backdrop-blur transition-all hover:bg-white/15 hover:text-white hover:border-gold/60"
-              >
-                {a.label}
-                <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-              </a>
-            ))}
-          </nav>
 
           {/* Scroll cue */}
           <a href="#services" aria-hidden="true" className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-1 text-white/70 hover:text-white transition-colors">
@@ -98,6 +119,7 @@ export function HomePage({ lang }: { lang: Lang }) {
           </a>
         </div>
       </section>
+
 
       <EventBanner lang={lang} contactHref={r.contact} />
 

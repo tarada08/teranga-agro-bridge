@@ -121,7 +121,22 @@
 @utility container-page {
   margin-inline: auto;
   max-width: 1200px;
-  padding-inline: 1.5rem;
+  padding-inline: 1.25rem;
+  width: 100%;
+}
+@media (min-width: 1280px) {
+  .container-page { max-width: 1280px; padding-inline: 2rem; }
+}
+@media (min-width: 1536px) {
+  .container-page { max-width: 1400px; padding-inline: 2.5rem; }
+}
+
+/* Readable text widths on large screens */
+@utility prose-readable { max-width: 65ch; }
+
+/* Desktop-only hover lift (avoids touch-device flicker) */
+@media (hover: none) {
+  .hover-lift:hover { transform: none; box-shadow: none; }
 }
 
 @keyframes marquee {
