@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Play } from "lucide-react";
+import { Play, Volume2, VolumeX } from "lucide-react";
 
 type Source = { src: string; type: string; media?: string };
 
@@ -27,6 +27,7 @@ export function LazyVideo({
   const [active, setActive] = useState(false);
   const [inView, setInView] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [muted, setMuted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -116,23 +117,42 @@ export function LazyVideo({
           </span>
         </button>
       ) : (
-        <video
-          ref={videoRef}
-          controls
-          autoPlay
-          playsInline
-          preload="metadata"
-          poster={posterUrl}
-          width={width}
-          height={height}
-          tabIndex={0}
-          aria-label={label}
-          className="absolute inset-0 h-full w-full object-cover focus:outline-none focus-visible:ring-4 focus-visible:ring-gold"
-        >
-          {inView && matchedSources.map((s) => (
-            <source key={s.src} src={s.src} type={s.type} />
-          ))}
-        </video>
+        <>
+          <video
+            ref={videoRef}
+            controls
+            autoPlay
+            playsInline
+            muted={muted}
+            preload="metadata"
+            poster={posterUrl}
+            width={width}
+            height={height}
+            tabIndex={0}
+            aria-label={label}
+            onVolumeChange={(e) => setMuted(e.currentTarget.muted)}
+            className="absolute inset-0 h-full w-full object-cover focus:outline-none focus-visible:ring-4 focus-visible:ring-gold"
+          >
+            {inView && matchedSources.map((s) => (
+              <source key={s.src} src={s.src} type={s.type} />
+            ))}
+          </video>
+          <button
+            type="button"
+            onClick={() => {
+              const v = videoRef.current;
+              if (!v) return;
+              const next = !v.muted;
+              v.muted = next;
+              setMuted(next);
+            }}
+            aria-label={muted ? "Réactiver le son" : "Couper le son"}
+            aria-pressed={muted}
+            className="absolute right-2 top-2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm transition-colors hover:bg-black/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+          >
+            {muted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+          </button>
+        </>
       )}
     </div>
   );
