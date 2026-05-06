@@ -211,7 +211,7 @@ export function ServicesPage({ lang }: { lang: Lang }) {
       </section>
 
       {/* PROCESS */}
-      <section aria-labelledby="process-heading" className="bg-secondary/40 border-y border-border cv-auto">
+      <section aria-labelledby="process-heading" className="container-page py-20 md:py-24 cv-auto" style={{ paddingTop: 0 }}>
         <div className="container-page py-20 md:py-24">
           <div className="mb-12 max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-wider text-primary">{t.processKicker}</p>
