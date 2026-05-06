@@ -140,20 +140,28 @@ export function ServicesPage({ lang }: { lang: Lang }) {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {t.items.map((s, i) => {
             const Icon = ICONS[i] ?? Sprout;
+            const img = SERVICE_IMAGES[i] ?? heroFactory;
             return (
               <article
                 key={s.t}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 shadow-soft hover-lift card-glow"
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-soft hover-lift card-glow"
               >
-                <div
-                  aria-hidden="true"
-                  className="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-gradient-to-br from-gold/20 to-primary/10 blur-2xl"
-                />
-                <div className="relative">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-glow text-primary-foreground shadow-soft transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                <div className="relative h-44 overflow-hidden">
+                  <img
+                    src={img}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
+                  <div className="absolute left-5 -bottom-6 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-glow text-primary-foreground shadow-elegant transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
                     <Icon className="h-6 w-6" aria-hidden="true" />
                   </div>
-                  <h3 className="mt-5 text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+                </div>
+                <div className="relative flex flex-1 flex-col p-7 pt-10">
+                  <h3 className="text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
                     {s.t}
                   </h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.d}</p>
@@ -170,6 +178,35 @@ export function ServicesPage({ lang }: { lang: Lang }) {
               </article>
             );
           })}
+        </div>
+      </section>
+
+      {/* DIFFERENTIATORS */}
+      <section aria-labelledby="why-heading" className="bg-secondary/40 border-y border-border cv-auto">
+        <div className="container-page py-20 md:py-24">
+          <div className="mb-12 max-w-2xl">
+            <p className="text-sm font-semibold uppercase tracking-wider text-primary">
+              {isFr ? "Pourquoi Teranga Bridge Africa" : "Why Teranga Bridge Africa"}
+            </p>
+            <h2 id="why-heading" className="mt-2 text-3xl md:text-4xl font-bold text-foreground">
+              {isFr ? "Une exigence industrielle, une attention humaine" : "Industrial rigor, human attention"}
+            </h2>
+            <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-primary to-gold" />
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {differentiators.map(({ icon: Icon, t: title, d }) => (
+              <div
+                key={title}
+                className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 shadow-soft hover-lift"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br from-gold/20 to-primary/10 text-primary transition-transform group-hover:scale-110">
+                  <Icon className="h-5 w-5" aria-hidden="true" />
+                </div>
+                <h3 className="mt-4 text-base font-semibold text-foreground">{title}</h3>
+                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{d}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
