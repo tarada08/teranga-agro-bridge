@@ -10,6 +10,10 @@ import {
   Sparkles,
   ShieldCheck,
   Factory,
+  Award,
+  Clock,
+  HeartHandshake,
+  Leaf,
 } from "lucide-react";
 import {
   Accordion,
@@ -18,22 +22,63 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { dict, routesByLang, type Lang } from "@/lib/i18n";
+import heroFactory from "@/assets/hero-factory.jpg";
+import heroCommodities from "@/assets/hero-commodities.jpg";
+import heroPort from "@/assets/hero-port.jpg";
+import heroTeam from "@/assets/hero-team.jpg";
 
 const ICONS = [Sprout, Globe2, Wrench, Lightbulb, Truck];
+const SERVICE_IMAGES = [heroCommodities, heroPort, heroFactory, heroTeam, heroPort];
 
 export function ServicesPage({ lang }: { lang: Lang }) {
   const t = dict[lang].services;
   const r = routesByLang[lang];
   const isFr = lang === "fr";
 
+  const stats = isFr
+    ? [
+        { v: "24h", l: "Réponse moyenne" },
+        { v: "15+", l: "Pays sourcés" },
+        { v: "100%", l: "Traçabilité" },
+        { v: "10+", l: "Années d'expertise" },
+      ]
+    : [
+        { v: "24h", l: "Average response" },
+        { v: "15+", l: "Sourcing countries" },
+        { v: "100%", l: "Traceability" },
+        { v: "10+", l: "Years of expertise" },
+      ];
+
+  const differentiators = isFr
+    ? [
+        { icon: Award, t: "Qualité certifiée", d: "Contrôles indépendants et certificats à chaque étape de la chaîne." },
+        { icon: HeartHandshake, t: "Proximité terrain", d: "Une équipe basée en Afrique, présente à vos côtés au quotidien." },
+        { icon: Clock, t: "Réactivité", d: "Première proposition sous 24h, exécution sans rupture." },
+        { icon: Leaf, t: "Engagement durable", d: "Sourcing responsable et logistique optimisée pour réduire l'empreinte." },
+      ]
+    : [
+        { icon: Award, t: "Certified quality", d: "Independent inspections and certificates at every stage of the chain." },
+        { icon: HeartHandshake, t: "On-the-ground proximity", d: "A team based in Africa, present alongside you every day." },
+        { icon: Clock, t: "Responsiveness", d: "First proposal within 24h, seamless execution." },
+        { icon: Leaf, t: "Sustainable commitment", d: "Responsible sourcing and optimized logistics to reduce footprint." },
+      ];
+
   return (
     <>
       {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-gradient-to-br from-primary via-primary to-primary-glow text-primary-foreground">
+      <section className="relative isolate overflow-hidden text-primary-foreground">
+        <img
+          src={heroFactory}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          loading="eager"
+          fetchPriority="high"
+        />
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 opacity-30"
-          style={{ background: "var(--gradient-hero)", backgroundSize: "200% 200%" }}
+          className="absolute inset-0 -z-10"
+          style={{ background: "var(--gradient-hero)" }}
         />
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute -top-32 -left-24 h-80 w-80 rounded-full bg-gold/20 blur-3xl animate-float-slow" />
@@ -48,7 +93,7 @@ export function ServicesPage({ lang }: { lang: Lang }) {
           <h1 className="mt-5 max-w-3xl text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] animate-fade-up" style={{ animationDelay: "0.1s" }}>
             {t.title}
           </h1>
-          <p className="mt-5 max-w-2xl text-lg text-primary-foreground/85 animate-fade-up" style={{ animationDelay: "0.2s" }}>
+          <p className="mt-5 max-w-2xl text-lg text-primary-foreground/90 animate-fade-up" style={{ animationDelay: "0.2s" }}>
             {t.lead}
           </p>
           <div className="mt-8 flex flex-wrap gap-3 animate-fade-up" style={{ animationDelay: "0.35s" }}>
@@ -68,6 +113,18 @@ export function ServicesPage({ lang }: { lang: Lang }) {
             </Link>
           </div>
         </div>
+
+        {/* Stats band */}
+        <div className="relative border-t border-white/10 bg-black/30 backdrop-blur-sm">
+          <div className="container-page grid grid-cols-2 gap-6 py-6 md:grid-cols-4 md:py-8">
+            {stats.map((s) => (
+              <div key={s.l} className="text-center md:text-left">
+                <div className="font-display text-3xl md:text-4xl font-bold text-gold">{s.v}</div>
+                <div className="mt-1 text-xs md:text-sm uppercase tracking-wider text-primary-foreground/85">{s.l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* SERVICES GRID */}
@@ -83,20 +140,28 @@ export function ServicesPage({ lang }: { lang: Lang }) {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {t.items.map((s, i) => {
             const Icon = ICONS[i] ?? Sprout;
+            const img = SERVICE_IMAGES[i] ?? heroFactory;
             return (
               <article
                 key={s.t}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 shadow-soft hover-lift card-glow"
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-soft hover-lift card-glow"
               >
-                <div
-                  aria-hidden="true"
-                  className="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-gradient-to-br from-gold/20 to-primary/10 blur-2xl"
-                />
-                <div className="relative">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-glow text-primary-foreground shadow-soft transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                <div className="relative h-44 overflow-hidden">
+                  <img
+                    src={img}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
+                  <div className="absolute left-5 -bottom-6 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-glow text-primary-foreground shadow-elegant transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
                     <Icon className="h-6 w-6" aria-hidden="true" />
                   </div>
-                  <h3 className="mt-5 text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+                </div>
+                <div className="relative flex flex-1 flex-col p-7 pt-10">
+                  <h3 className="text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
                     {s.t}
                   </h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.d}</p>
@@ -116,8 +181,37 @@ export function ServicesPage({ lang }: { lang: Lang }) {
         </div>
       </section>
 
+      {/* DIFFERENTIATORS */}
+      <section aria-labelledby="why-heading" className="bg-secondary/40 border-y border-border cv-auto">
+        <div className="container-page py-20 md:py-24">
+          <div className="mb-12 max-w-2xl">
+            <p className="text-sm font-semibold uppercase tracking-wider text-primary">
+              {isFr ? "Pourquoi Teranga Bridge Africa" : "Why Teranga Bridge Africa"}
+            </p>
+            <h2 id="why-heading" className="mt-2 text-3xl md:text-4xl font-bold text-foreground">
+              {isFr ? "Une exigence industrielle, une attention humaine" : "Industrial rigor, human attention"}
+            </h2>
+            <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-primary to-gold" />
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {differentiators.map(({ icon: Icon, t: title, d }) => (
+              <div
+                key={title}
+                className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 shadow-soft hover-lift"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br from-gold/20 to-primary/10 text-primary transition-transform group-hover:scale-110">
+                  <Icon className="h-5 w-5" aria-hidden="true" />
+                </div>
+                <h3 className="mt-4 text-base font-semibold text-foreground">{title}</h3>
+                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* PROCESS */}
-      <section aria-labelledby="process-heading" className="bg-secondary/40 border-y border-border cv-auto">
+      <section aria-labelledby="process-heading" className="cv-auto">
         <div className="container-page py-20 md:py-24">
           <div className="mb-12 max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-wider text-primary">{t.processKicker}</p>
