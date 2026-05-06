@@ -158,8 +158,10 @@ export function HomePage({ lang }: { lang: Lang }) {
                 sources={[
                   { src: "/videos/tba-mobile.webm", type: "video/webm", media: "(max-width: 767px)" },
                   { src: "/videos/tba-mobile.mp4", type: "video/mp4", media: "(max-width: 767px)" },
-                  { src: "/videos/tba.webm", type: "video/webm", media: "(min-width: 768px)" },
-                  { src: "/videos/tba.mp4", type: "video/mp4", media: "(min-width: 768px)" },
+                  { src: "/videos/tba-tablet.webm", type: "video/webm", media: "(min-width: 768px) and (max-width: 1024px)" },
+                  { src: "/videos/tba-tablet.mp4", type: "video/mp4", media: "(min-width: 768px) and (max-width: 1024px)" },
+                  { src: "/videos/tba.webm", type: "video/webm", media: "(min-width: 1025px)" },
+                  { src: "/videos/tba.mp4", type: "video/mp4", media: "(min-width: 1025px)" },
                 ]}
                 poster="/videos/tba-poster.jpg"
                 posterMobile="/videos/tba-poster-mobile.jpg"
