@@ -10,6 +10,10 @@ import {
   Sparkles,
   ShieldCheck,
   Factory,
+  Award,
+  Clock,
+  HeartHandshake,
+  Leaf,
 } from "lucide-react";
 import {
   Accordion,
@@ -18,22 +22,63 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { dict, routesByLang, type Lang } from "@/lib/i18n";
+import heroFactory from "@/assets/hero-factory.jpg";
+import heroCommodities from "@/assets/hero-commodities.jpg";
+import heroPort from "@/assets/hero-port.jpg";
+import heroTeam from "@/assets/hero-team.jpg";
 
 const ICONS = [Sprout, Globe2, Wrench, Lightbulb, Truck];
+const SERVICE_IMAGES = [heroCommodities, heroPort, heroFactory, heroTeam, heroPort];
 
 export function ServicesPage({ lang }: { lang: Lang }) {
   const t = dict[lang].services;
   const r = routesByLang[lang];
   const isFr = lang === "fr";
 
+  const stats = isFr
+    ? [
+        { v: "24h", l: "Réponse moyenne" },
+        { v: "15+", l: "Pays sourcés" },
+        { v: "100%", l: "Traçabilité" },
+        { v: "10+", l: "Années d'expertise" },
+      ]
+    : [
+        { v: "24h", l: "Average response" },
+        { v: "15+", l: "Sourcing countries" },
+        { v: "100%", l: "Traceability" },
+        { v: "10+", l: "Years of expertise" },
+      ];
+
+  const differentiators = isFr
+    ? [
+        { icon: Award, t: "Qualité certifiée", d: "Contrôles indépendants et certificats à chaque étape de la chaîne." },
+        { icon: HeartHandshake, t: "Proximité terrain", d: "Une équipe basée en Afrique, présente à vos côtés au quotidien." },
+        { icon: Clock, t: "Réactivité", d: "Première proposition sous 24h, exécution sans rupture." },
+        { icon: Leaf, t: "Engagement durable", d: "Sourcing responsable et logistique optimisée pour réduire l'empreinte." },
+      ]
+    : [
+        { icon: Award, t: "Certified quality", d: "Independent inspections and certificates at every stage of the chain." },
+        { icon: HeartHandshake, t: "On-the-ground proximity", d: "A team based in Africa, present alongside you every day." },
+        { icon: Clock, t: "Responsiveness", d: "First proposal within 24h, seamless execution." },
+        { icon: Leaf, t: "Sustainable commitment", d: "Responsible sourcing and optimized logistics to reduce footprint." },
+      ];
+
   return (
     <>
       {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-gradient-to-br from-primary via-primary to-primary-glow text-primary-foreground">
+      <section className="relative isolate overflow-hidden text-primary-foreground">
+        <img
+          src={heroFactory}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          loading="eager"
+          fetchPriority="high"
+        />
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 opacity-30"
-          style={{ background: "var(--gradient-hero)", backgroundSize: "200% 200%" }}
+          className="absolute inset-0 -z-10"
+          style={{ background: "var(--gradient-hero)" }}
         />
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute -top-32 -left-24 h-80 w-80 rounded-full bg-gold/20 blur-3xl animate-float-slow" />
@@ -48,7 +93,7 @@ export function ServicesPage({ lang }: { lang: Lang }) {
           <h1 className="mt-5 max-w-3xl text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] animate-fade-up" style={{ animationDelay: "0.1s" }}>
             {t.title}
           </h1>
-          <p className="mt-5 max-w-2xl text-lg text-primary-foreground/85 animate-fade-up" style={{ animationDelay: "0.2s" }}>
+          <p className="mt-5 max-w-2xl text-lg text-primary-foreground/90 animate-fade-up" style={{ animationDelay: "0.2s" }}>
             {t.lead}
           </p>
           <div className="mt-8 flex flex-wrap gap-3 animate-fade-up" style={{ animationDelay: "0.35s" }}>
@@ -66,6 +111,18 @@ export function ServicesPage({ lang }: { lang: Lang }) {
             >
               {t.ctaContact}
             </Link>
+          </div>
+        </div>
+
+        {/* Stats band */}
+        <div className="relative border-t border-white/10 bg-black/30 backdrop-blur-sm">
+          <div className="container-page grid grid-cols-2 gap-6 py-6 md:grid-cols-4 md:py-8">
+            {stats.map((s) => (
+              <div key={s.l} className="text-center md:text-left">
+                <div className="font-display text-3xl md:text-4xl font-bold text-gold">{s.v}</div>
+                <div className="mt-1 text-xs md:text-sm uppercase tracking-wider text-primary-foreground/85">{s.l}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
