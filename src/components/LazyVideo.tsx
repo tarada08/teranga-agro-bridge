@@ -27,6 +27,7 @@ export function LazyVideo({
   const [active, setActive] = useState(false);
   const [inView, setInView] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [muted, setMuted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
