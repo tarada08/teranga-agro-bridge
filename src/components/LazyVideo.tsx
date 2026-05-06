@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Play } from "lucide-react";
+import { Play, Volume2, VolumeX } from "lucide-react";
 
 type Source = { src: string; type: string; media?: string };
 
